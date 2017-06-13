@@ -55,8 +55,14 @@ function Population() {
         this.matingpool.add(this.rockets[i]);
       }
     }
-
   }
+
+  this.selection = function() {
+    var parentA = random(this.matingpool);
+    var parentB = random(this.matingpool);
+    var child = parentA.crossover(parentB);
+  }
+
 
   this.run = function() {
     for (var i = 0; i< this.popsize; i++) {
