@@ -20,7 +20,10 @@ function Snake() {
     var d = dist(this.x, this.y, pos.x, pos.y);
     if (d < 1) {
       this.total++;
-      vel += 0.5;
+      vel += 0.2;
+      if (vel == 30.2) {
+        vel = 30;
+      }
       return true;
     } else {
       return false;
