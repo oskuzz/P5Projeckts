@@ -1,9 +1,10 @@
 var population;
-var lifespan = 400;
+var lifespan = 600;
 var lifeP;
 var count = 0;
 var target;
-var maxforce = 0.2;
+var maxforce = 0.5;
+var roundCounter = 0;
 
 var rx = 100;
 var ry = 150;
@@ -26,10 +27,12 @@ function setup() {
 function draw() {
   background(0);
   population.run();
-  lifeP.html(count);
+  lifeP.html("Rounds: " + floor(roundCounter));
+
 
   count++;
   if (count == lifespan) {
+    roundCounter++;
     population.evaluate();
     population.selection();
     count = 0;
@@ -42,7 +45,7 @@ function draw() {
 
 function Population() {
   this.rockets = [];
-  this.popsize = 25;
+  this.popsize = 40;
   this.matingpool = [];
 
   for (var i = 0; i< this.popsize; i++) {
@@ -154,7 +157,7 @@ function Rocket(dna){
       this.fitness *= 10;
     }
     if (this.crashed) {
-      this.fitness /= 10;
+      this.fitness /= 20;
     }
   }
 
@@ -198,8 +201,5 @@ function Rocket(dna){
     pop();
 
   }
-
-
-
 
 }
